@@ -1,0 +1,75 @@
+@media print {
+  /* здесь будут стили для печати */
+  form {
+    display: none;
+  }
+  
+  body * {
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .card-style.card1 {
+    break-inside: avoid;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 210mm;
+}
+
+.card-style {
+  box-sizing: border-box;
+  width: 85mm;
+  height: 55mm;
+  border: 1px solid black;  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  margin: 3.2mm;
+  break-inside: avoid;
+}
+
+
+
+/* h1 - company name, h2 - name, h3 - phone number, h4 - job title, p - contacts */
+
+.card1 > * {
+  padding: 2mm;
+}
+
+.card1 h1 {
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.card1 h2 {
+ text-transform: capitalize;
+ margin: 0;
+}
+
+.card1 h4 {
+  margin: 0;
+}
+
+.card1 h3 {
+  margin: 0;
+}
+
+.card1 p {
+  margin: 0;
+  padding-top: 0;  
+}
+
+.card1 h4 {
+  margin: 0;
+}
