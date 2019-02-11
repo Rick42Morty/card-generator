@@ -53,7 +53,7 @@ const randPhonePrefix = () => {
   }
 };
 const randomLightColor = () => {
-  if (Math.random() < 0.2) return 'white';
+  if (Math.random() < 0.1) return 'white';
   return `rgb(
     ${randNum(150, 255)}, 
     ${randNum(150, 255)}, 
@@ -100,7 +100,7 @@ const createCard = man => {
     company.innerText = compName;
   }
 
-  if (Math.random() < 0.25) {
+  if (Math.random() < 0.1) {
     const color = randomLightColor();
     company.style.backgroundColor = color;
   }
@@ -118,7 +118,7 @@ const createCard = man => {
   //Add main info div
 
   const mainInfo = document.createElement('div');
-  if (Math.random() < 0.25) {
+  if (Math.random() < 0.1) {
     const color = randomLightColor();
     mainInfo.style.backgroundColor = color;
   }
@@ -131,22 +131,34 @@ const createCard = man => {
 
   const job = document.createElement('h4');
   job.innerText = `${jobs[Math.floor(Math.random() * jobs.length)]}`;
-  job.style.fontSize = `${randNum(4, 5)}mm`;
+  const jobFont = randNum(4, 5);
+  job.style.fontSize = `${jobFont}mm`;
   job.style.lineHeight = job.style.fontSize;
-  mainInfo.appendChild(job);
+  // mainInfo.appendChild(job);
 
   const phone = document.createElement('h3');
   phone.innerText = `${randPhonePrefix()} ${data[7]}`;
-  phone.style.fontSize = `${randNum(4, 5)}mm`;
+  phone.style.fontSize = `${jobFont - 1}mm`;
   phone.style.lineHeight = phone.style.fontSize;
-  mainInfo.appendChild(phone);
+  // mainInfo.appendChild(phone);
+
+  if (Math.random() < 0.33) {
+    mainInfo.appendChild(job);
+    mainInfo.appendChild(phone);
+  } else if (Math.random() < 0.5) {
+    mainInfo.appendChild(phone);
+    mainInfo.appendChild(job);
+  } else {
+    mainInfo.appendChild(job);
+    //mainInfo.appendChild(phone);
+  }
 
   card.appendChild(mainInfo);
 
   //Add contacts
 
   const contacts = document.createElement('p');
-  const contactOption = randNum(0, 8);
+  const contactOption = randNum(0, 9);
   switch (contactOption) {
     case 0:
       contacts.innerText = `${data[7]}
@@ -185,6 +197,11 @@ const createCard = man => {
     Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
       break;
     case 7:
+      contacts.innerText = `Telegram: ${data[7]}
+    E-mail: ${data[4].toLowerCase()}
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+      break;
+    case 8:
       contacts.innerText = `Viber: ${data[7]}
     E-mail: ${data[4].toLowerCase()}
     Website: ${data[9] ? data[9] : 'www.randomsite.com'}
@@ -200,7 +217,7 @@ const createCard = man => {
   contacts.style.fontSize = `${randNum(3, 4)}mm`;
   contacts.style.lineHeight = contacts.style.fontSize;
 
-  if (Math.random() < 0.25) {
+  if (Math.random() < 0.1) {
     const color = randomLightColor();
     contacts.style.backgroundColor = color;
   }
@@ -219,10 +236,27 @@ const createCard = man => {
   if (Math.random() < 0.25) {
     const color1 = randomLightColor();
     const color2 = randomLightColor();
-    if (Math.random() < 0.5) {
+
+    if (Math.random() < 0.2) {
       card.style.background = `linear-gradient(${color1}, ${color2})`;
+    } else if (Math.random() < 0.25) {
+      card.style.background = `linear-gradient(${randNum(0, 360)}deg, ${color1}, ${color2})`;
+    } else if (Math.random() < 0.3) {
+      const n = randNum(20, 80);
+      card.style.background = `linear-gradient(to right, ${color1} ${n}%, ${color2} ${100 - n}%)`;
+    } else if (Math.random() < 0.6) {
+      const n = randNum(10, 90);
+      card.style.background = `linear-gradient(${randNum(
+        0,
+        360
+      )}deg, ${color1} ${n}%, ${color2} ${100 - n}%)`;
     } else {
-      card.style.background = `linear-gradient(90deg, ${color1}, ${color2})`;
+      card.style.background = `repeating-linear-gradient(${randNum(
+        0,
+        360
+      )}deg, ${color1}, ${color1} .5em,
+      ${color2} .5em, ${color2} 1em)`;
+      card.style.backgroundColor = randomLightColor();
     }
   }
   card.style.color = randomDarkColor();
