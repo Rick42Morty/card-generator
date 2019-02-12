@@ -1,4 +1,5 @@
 const button = document.getElementById('submitBtn');
+const customButton = document.getElementById('customBtn');
 const textArea = document.getElementById('sourceText');
 const container = document.getElementById('cardContainer');
 
@@ -282,10 +283,190 @@ const createCard = man => {
   container.appendChild(card);
 };
 
+const createCustomCard = (man, index) => {
+  if (man.trim() === '') return;
+  const card = document.createElement('div');
+  card.contentEditable = 'true';
+  card.classList.add('card-style');
+  card.classList.add('card1');
+
+  if (Math.random() < 0.33) {
+    card.style.textAlign = 'right';
+  } else if (Math.random() < 0.5) {
+    card.style.textAlign = 'left';
+  } else {
+    card.style.textAlign = 'center';
+  }
+
+  card.style.fontFamily = randFont();
+
+  const data = man.split('\t');
+
+  // Add company name
+  const company = document.createElement('h1');
+  if (Math.random() < 0.5) company.style.fontFamily = 'Arial';
+  company.style.color = randomDarkColor();
+  company.style.fontSize = `${randNum(7, 9)}mm`;
+  company.style.lineHeight = company.style.fontSize;
+  const compName = `${data[8] ? data[8] : 'random inc'}`;
+  if (Math.random() < 0.5) {
+    company.innerText = compName.toUpperCase();
+  } else {
+    company.innerText = compName;
+  }
+
+  if (Math.random() < 0.1) {
+    if (Math.random() < 0.5) {
+      company.style.textDecoration = 'underline';
+    } else {
+      company.style.borderBottom = `2mm solid ${randomDarkColor()}`;
+    }
+  }
+
+  if (Math.random() < 0.33) {
+    company.style.textAlign = 'right';
+  } else if (Math.random() < 0.5) {
+    company.style.textAlign = 'left';
+  } else {
+    company.style.textAlign = 'center';
+  }
+
+  card.appendChild(company);
+
+  //Add main info div
+
+  const mainInfo = document.createElement('div');
+
+  const name = document.createElement('h2');
+  name.style.fontSize = `${randNum(6, 7)}mm`;
+  name.style.lineHeight = name.style.fontSize;
+  name.innerText = `${data[0]} ${data[1]}`.toLowerCase();
+  mainInfo.appendChild(name);
+
+  const job = document.createElement('h4');
+  job.innerText = `${jobs[Math.floor(Math.random() * jobs.length)]}`;
+  const jobFont = randNum(4, 5);
+  job.style.fontSize = `${jobFont}mm`;
+  job.style.lineHeight = job.style.fontSize;
+  // mainInfo.appendChild(job);
+
+  const phone = document.createElement('h3');
+  phone.innerText = `${randPhonePrefix()} ${data[7]}`;
+  phone.style.fontSize = `${jobFont - 1}mm`;
+  phone.style.lineHeight = phone.style.fontSize;
+  // mainInfo.appendChild(phone);
+
+  if (Math.random() < 0.33) {
+    mainInfo.appendChild(job);
+    mainInfo.appendChild(phone);
+  } else if (Math.random() < 0.5) {
+    mainInfo.appendChild(phone);
+    mainInfo.appendChild(job);
+  } else {
+    mainInfo.appendChild(job);
+    //mainInfo.appendChild(phone);
+  }
+
+  if (Math.random() < 0.066) {
+    const bordColor = randomDarkColor();
+    mainInfo.style.borderBottom = `2mm solid ${bordColor}`;
+    mainInfo.style.borderTop = `2mm solid ${bordColor}`;
+  }
+
+  card.appendChild(mainInfo);
+
+  //Add contacts
+
+  const contacts = document.createElement('p');
+  const contactOption = randNum(0, 9);
+  switch (contactOption) {
+    case 0:
+      contacts.innerText = `${data[7]}
+    ${data[4].toLowerCase()}
+    ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
+      break;
+    case 1:
+      contacts.innerText = `${data[7]}
+    ${data[4].toLowerCase()}
+    ${data[9] ? data[9] : 'www.randomsite.com'}
+    ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
+      break;
+    case 2:
+      contacts.innerText = `E-mail: ${data[4].toLowerCase()}
+    Web: ${data[9] ? data[9] : 'www.randomsite.com'}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
+      break;
+    case 3:
+      contacts.innerText = `mobile: ${data[7]}
+    E-mail: ${data[4].toLowerCase()}
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+      break;
+    case 4:
+      contacts.innerText = `WhatsApp: ${data[7]}
+    E-mail: ${data[4].toLowerCase()}
+    ${data[9] ? data[9] : 'www.randomsite.com'}
+    ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
+      break;
+    case 5:
+      contacts.innerText = `E-mail: ${data[4].toLowerCase()}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}
+     ${data[9] ? data[9] : 'www.randomsite.com'}`;
+      break;
+    case 6:
+      contacts.innerText = `E-mail: ${data[4].toLowerCase()}
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+      break;
+    case 7:
+      contacts.innerText = `Telegram: ${data[7]}
+    E-mail: ${data[4].toLowerCase()}
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+      break;
+    case 8:
+      contacts.innerText = `Viber: ${data[7]}
+    E-mail: ${data[4].toLowerCase()}
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
+      break;
+    default:
+      contacts.innerText = `Viber: ${data[7]}
+    E-mail: ${data[4].toLowerCase()}
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
+  }
+
+  contacts.style.fontSize = `${randNum(3, 4)}mm`;
+  contacts.style.lineHeight = contacts.style.fontSize;
+
+  if (Math.random() < 0.33) {
+    contacts.style.textAlign = 'right';
+  } else if (Math.random() < 0.5) {
+    contacts.style.textAlign = 'left';
+  } else {
+    contacts.style.textAlign = 'center';
+  }
+
+  card.appendChild(contacts);
+
+  const numberOfCustomPatterns = 25;
+
+  card.classList.add(`custom${index % numberOfCustomPatterns}`);
+  card.style.backgroundColor = randomLightColor();
+  card.style.color = randomDarkColor();
+  container.appendChild(card);
+};
+
 button.addEventListener('click', e => {
   e.preventDefault();
   const people = textArea.value.split('\n');
   people.forEach(el => {
     createCard(el);
+  });
+});
+
+customButton.addEventListener('click', e => {
+  e.preventDefault();
+  const people = textArea.value.split('\n');
+  people.forEach((el, ind) => {
+    createCustomCard(el, ind);
   });
 });
