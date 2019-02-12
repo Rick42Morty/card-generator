@@ -105,6 +105,14 @@ const createCard = man => {
     company.style.backgroundColor = color;
   }
 
+  if (Math.random() < 0.1) {
+    if (Math.random() < 0.5) {
+      company.style.textDecoration = 'underline';
+    } else {
+      company.style.borderBottom = `2mm solid ${randomDarkColor()}`;
+    }
+  }
+
   if (Math.random() < 0.33) {
     company.style.textAlign = 'right';
   } else if (Math.random() < 0.5) {
@@ -151,6 +159,12 @@ const createCard = man => {
   } else {
     mainInfo.appendChild(job);
     //mainInfo.appendChild(phone);
+  }
+
+  if (Math.random() < 0.066) {
+    const bordColor = randomDarkColor();
+    mainInfo.style.borderBottom = `2mm solid ${bordColor}`;
+    mainInfo.style.borderTop = `2mm solid ${bordColor}`;
   }
 
   card.appendChild(mainInfo);
@@ -244,18 +258,23 @@ const createCard = man => {
     } else if (Math.random() < 0.3) {
       const n = randNum(20, 80);
       card.style.background = `linear-gradient(to right, ${color1} ${n}%, ${color2} ${100 - n}%)`;
-    } else if (Math.random() < 0.6) {
-      const n = randNum(10, 90);
+    } else if (Math.random() < 0.3) {
+      const n = randNum(20, 80);
       card.style.background = `linear-gradient(${randNum(
         0,
         360
       )}deg, ${color1} ${n}%, ${color2} ${100 - n}%)`;
-    } else {
+    } else if (Math.random() < 0.5) {
+      const n = randNum(20, 80);
       card.style.background = `repeating-linear-gradient(${randNum(
         0,
         360
-      )}deg, ${color1}, ${color1} .5em,
-      ${color2} .5em, ${color2} 1em)`;
+      )}deg, ${color1}, ${color1} ${n / 100 - 0.06}em,
+      ${color2} ${n / 100 + 0.06}em, ${color2} 1em)`;
+      card.style.backgroundColor = randomLightColor();
+    } else {
+      card.classList.add('pattern1');
+      card.style.backgroundSize = `${randNum(1, 4)} ${randNum(1, 4)}em`;
       card.style.backgroundColor = randomLightColor();
     }
   }
