@@ -204,7 +204,7 @@ const createCard = man => {
     case 5:
       contacts.innerText = `E-mail: ${data[4].toLowerCase()}
     Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}
-    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+     ${data[9] ? data[9] : 'www.randomsite.com'}`;
       break;
     case 6:
       contacts.innerText = `E-mail: ${data[4].toLowerCase()}
@@ -264,7 +264,7 @@ const createCard = man => {
         0,
         360
       )}deg, ${color1} ${n}%, ${color2} ${100 - n}%)`;
-    } else if (Math.random() < 0.5) {
+    } else if (Math.random() < 0.4) {
       const n = randNum(20, 80);
       card.style.background = `repeating-linear-gradient(${randNum(
         0,
@@ -274,7 +274,7 @@ const createCard = man => {
       card.style.backgroundColor = randomLightColor();
     } else {
       card.classList.add('pattern1');
-      card.style.backgroundSize = `${randNum(1, 4)} ${randNum(1, 4)}em`;
+      card.style.backgroundSize = `${randNum(1, 4)}em ${randNum(1, 4)}em`;
       card.style.backgroundColor = randomLightColor();
     }
   }
