@@ -340,7 +340,8 @@ const createCard = man => {
     case 3:
       contacts.innerText = `mobile: ${data[7]}
     E-mail: ${data[4].toLowerCase()}
-    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
       break;
     case 4:
       contacts.innerText = `WhatsApp: ${data[7]}
@@ -351,16 +352,20 @@ const createCard = man => {
     case 5:
       contacts.innerText = `E-mail: ${data[4].toLowerCase()}
     Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}
-     ${data[9] ? data[9] : 'www.randomsite.com'}`;
+     ${data[9] ? data[9] : 'www.randomsite.com'}
+     ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
+
       break;
     case 6:
       contacts.innerText = `E-mail: ${data[4].toLowerCase()}
-    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
       break;
     case 7:
       contacts.innerText = `Telegram: ${data[7]}
     E-mail: ${data[4].toLowerCase()}
-    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
       break;
     case 8:
       contacts.innerText = `Viber: ${data[7]}
@@ -545,7 +550,8 @@ const createCustomCard = (man, index) => {
     case 3:
       contacts.innerText = `mobile: ${data[7]}
     E-mail: ${data[4].toLowerCase()}
-    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
       break;
     case 4:
       contacts.innerText = `WhatsApp: ${data[7]}
@@ -556,16 +562,20 @@ const createCustomCard = (man, index) => {
     case 5:
       contacts.innerText = `E-mail: ${data[4].toLowerCase()}
     Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}
-     ${data[9] ? data[9] : 'www.randomsite.com'}`;
+     ${data[9] ? data[9] : 'www.randomsite.com'}
+     ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
+
       break;
     case 6:
       contacts.innerText = `E-mail: ${data[4].toLowerCase()}
-    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
       break;
     case 7:
       contacts.innerText = `Telegram: ${data[7]}
     E-mail: ${data[4].toLowerCase()}
-    Website: ${data[9] ? data[9] : 'www.randomsite.com'}`;
+    Website: ${data[9] ? data[9] : 'www.randomsite.com'}
+    Address: ${data[10] ? data[10] : data[2] + ' Random Street 54-78'}`;
       break;
     case 8:
       contacts.innerText = `Viber: ${data[7]}
